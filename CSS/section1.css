@@ -1,0 +1,45 @@
+.lego-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.lego-container > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. 체크박스 숨기기*/
+#logo-toggle {
+  display: none;
+}
+
+/* 로고 기본 스타일*/
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 서서히 줄어드는 애니메이션 효과 (1.5초) */
+  transition: transform 1.5s ease-in-out;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 체크박스 클릭 시 로고 크기 감소, 위치 조정정*/
+#logo-toggle:checked + .logo {
+  transform: translate(-50%, -75%) scale(0.35);
+}
