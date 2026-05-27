@@ -3,20 +3,118 @@
   background-color: #fcffff;
   padding: 100px;
   box-sizing: border-box;
+  overflow-x: hidden;
+  margin-top: 100px;
+  scroll-margin-top: 100px;
+  background-color: #f4f5f7;
 }
 
 .personal .card {
   display: flex;
-  gap: 50px;
-  overflow-x: auto; /* 가로 스크롤 생성 */
+  gap: 100px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 460px;
+  overflow-x: auto;
   overflow-y: hidden;
-  margin: 20px 0px 100px 0px;
+  padding-top: 220px;
+  margin: -140px 0px 100px 0px;
+  background-color: #f4f5f7;
+  transition: transform 0.5s ease;
 }
 
 .personal .cb {
   width: 400px;
   height: 400px;
   border-radius: 30px;
-  background-color: rgb(224, 47, 47);
   flex-shrink: 0;
+  position: relative;
+  box-shadow: 10px 14px 20px rgba(0, 0, 0, 0.32);
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.personal .cb:first-child img {
+  position: absolute;
+  width: 600px;
+  height: auto;
+  left: 78%;
+  top: -220px;
+  z-index: 2;
+  filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+  transform: translateX(-50%) rotate(-8deg);
+  transform-origin: center bottom;
+}
+
+.yh {
+  position: absolute;
+  width: 320px;
+  height: auto;
+  left: 72%;
+  top: -200px;
+  z-index: 2;
+  filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+  transform: translateX(-50%) rotate(-15deg);
+  transform-origin: center bottom;
+}
+
+.hm {
+  position: absolute;
+  width: 310px;
+  height: auto;
+  left: 76%;
+  top: -180px;
+  z-index: 2;
+  filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+  transform: translateX(-50%) rotate(-20deg);
+  transform-origin: center bottom;
+}
+
+.sh {
+  position: absolute;
+  width: 520px;
+  height: auto;
+  left: 50%;
+  top: -160px;
+  z-index: 2;
+  filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+  transform: translateX(-50%);
+  transform-origin: center bottom;
+}
+
+.red {
+  background-color: #dd343d;
+  transition: transform 0.5s ease;
+}
+
+.red:hover {
+  transform: scale(1.05);
+}
+
+.blue {
+  background-color: #1b72d3;
+  transition: transform 0.5s ease;
+}
+
+.blue:hover {
+  transform: scale(1.05);
+}
+
+.yellow {
+  background-color: #ffcb26;
+  transition: transform 0.5s ease;
+}
+
+.yellow:hover {
+  transform: scale(1.05);
+}
+
+.green {
+  background-color: #2cc069;
+  transition: transform 0.5s ease;
+}
+
+.green:hover {
+  transform: scale(1.05);
 }
