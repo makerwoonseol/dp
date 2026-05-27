@@ -3,9 +3,6 @@
 /* 지도 전체 영역 */
 
 .map {
-  background-color: #f4f5f7;
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
 }
