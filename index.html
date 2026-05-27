@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="CSS/test.css" />
     <link rel="stylesheet" href="CSS/reset.css" />
     <link rel="stylesheet" href="CSS/section2.css" />
+    <link rel="stylesheet" href="CSS/commmon.css" />
+    <link rel="stylesheet" href="CSS/section4.css" />
   </head>
   <body>
     <!--이 회색 글씨는 주석이라는 거야. 코드에 영향을 안 미치고, 메모 같은 느낌이야
@@ -16,7 +18,7 @@
     <!--자 헤더는 우리가 말하는 로고나 메뉴 있는 곳이야-->
     <!--하하 수정됨-->
     <main>
-      <section class="team">
+      <section class="team start">
         <div class="bg1">
           <h3></h3>
           <h2></h2>
@@ -26,38 +28,40 @@
       </section>
       <!--팀 소개하는 첫번째 섹션이야-->
 
-      <section class="personal">
+      <section class="personal start">
         <div class="card">
-          <div class="cb">
-            <img src="Image/sh.png" alt="" />
-            <h3></h3>
-            <h5></h5>
+          <div class="cb red">
+            <img src="Image/광식.png" alt="" />
+            <div>
+              <h3>성광식</h3>
+              <h5>#조장 #ENFP #코딩_너무_힘들어요</h5>
+              <p></p>
+            </div>
+          </div>
+          <div class="cb blue">
+            <img src="Image/영희.png" alt="" class="yh" />
+            <h3>양영희</h3>
+            <h5>#이미지_담당 #할게_먆아요</h5>
             <p></p>
           </div>
-          <div class="cb">
-            <img src="" alt="" />
-            <h3></h3>
-            <h5></h5>
+          <div class="cb yellow">
+            <img src="Image/해민.png" alt="" class="hm" />
+            <h3>김서현</h3>
+            <h5>#코딩_쉽네ㅋ</h5>
             <p></p>
           </div>
-          <div class="cb">
-            <img src="" alt="" />
-            <h3></h3>
-            <h5></h5>
-            <p></p>
-          </div>
-          <div class="cb">
-            <img src="" alt="" />
-            <h3></h3>
-            <h5></h5>
+          <div class="cb green">
+            <img src="Image/서현.png" alt="" class="sh" />
+            <h3>임해민</h3>
+            <h5>#열심히했어요 #좀_잘하는_듯</h5>
             <p></p>
           </div>
         </div>
         <!--각 구성원 소개하는 섹션이야-->
-        <div>구성원 소개글 어쩌구 저쩌구</div>
+        <div></div>
       </section>
 
-      <section class="Reason">
+      <section class="Reason start">
         <div class="pages">
           <img src="" alt="" />
           <div>페이지 번호 왼쪽 상단</div>
@@ -77,14 +81,64 @@
       </section>
       <!--계기를 소개하는 섹션이야-->
 
-      <section class="map">
-        <div class="minimap">
-          <img src="Image/KakaoTalk_Photo_2026-05-21-15-00-11 001.png" alt="" />
+      <section class="map start">
+        <div class="map-container">
+          <!-- 지도 이미지 -->
+          <img src="Image/map.png" alt="레고 지도" class="map-image" />
+
+          <!-- 서울 -->
+          <div class="pin-wrap">
+            <input type="radio" name="city" id="seoul-check" />
+
+            <label for="seoul-check" class="pin seoul"></label>
+
+            <div class="bubble bubble-seoul">
+              <a href="https://www.instagram.com/kssoscol" target="_blank">
+                <img src="Image/서현.png" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 남양주 -->
+          <div class="pin-wrap">
+            <input type="radio" name="city" id="namyangju-check" />
+
+            <label for="namyangju-check" class="pin namyangju"></label>
+            <div class="bubble bubble-namyangju">
+              <a href="https://www.instagram.com/emaemin_" target="_blank">
+                <img src="Image/해민.png" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 광주 -->
+          <div class="pin-wrap">
+            <input type="radio" name="city" id="gwangju-check" />
+
+            <label for="gwangju-check" class="pin gwangju"></label>
+
+            <div class="bubble bubble-gwangju">
+              <a href="https://www.instagram.com/mr.woonseol" target="_blank">
+                <img src="Image/광식.png" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 수원 -->
+          <div class="pin-wrap">
+            <input type="radio" name="city" id="suwon-check" />
+
+            <label for="suwon-check" class="pin suwon"></label>
+            <div class="bubble bubble-suwon">
+              <a
+                href="https://www.instagram.com/yyang_0_hee?igsh=ZHc4MWx4a25tZXho"
+                target="_blank"
+              >
+                <img src="Image/영희.png" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
       </section>
       <!--지도가 있는 섹션이야-->
     </main>
