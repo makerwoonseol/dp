@@ -1,12 +1,9 @@
 .personal {
-  height: 100vh;
-  background-color: #fcffff;
   padding: 100px;
   box-sizing: border-box;
   overflow-x: hidden;
   margin-top: 100px;
   scroll-margin-top: 100px;
-  background-color: #f4f5f7;
 }
 
 .personal .card {
