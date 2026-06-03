@@ -123,6 +123,14 @@ span {
   font-display: swap;
 }
 
+a {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
 html,
 body {
   height: 100%;
@@ -167,7 +175,7 @@ main > section {
     overflow-y: hidden;
     padding-top: 220px;
     margin: -140px 0px 100px 0px;
-    background-color: #f4f5f7;
+    background-color: transparent;
     transition: transform 0.5s ease;
   }
 

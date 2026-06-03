@@ -1,14 +1,74 @@
+.team.start {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.nav-bar {
+  position: absolute; /* 섹션 1의 최상단에 절대좌표로 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* 목차 바 높이 */
+  padding: 0 60px; /* 좌우 여백 (창 크기가 줄어들어도 최소한의 여백 확보)  */
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between; /* 좌상단(KAYWON)과 우상단(메뉴들)을 양끝으로 정렬 */
+  align-items: center; /* 세로 기준 정중앙 정렬 */
+
+  z-index: 20; /* 웅장한 대형 로고(z-index: 10)보다 더 위에 보이도록 설정 */
+  background: transparent; /* 배경색*/
+}
+
+/* 좌상단 KAYWON 스타일 */
+.nav-logo {
+  font-weight: 800;
+  font-size: 30px;
+  color: #333;
+  letter-spacing: 1px; /* 글자 자간 살짝 넓히기 */
+}
+
+/* 우상단 메뉴 바 그룹 */
+.nav-menu {
+  display: flex;
+  gap: 3vw; /* 각 메뉴 사이의 간격, 창 크기 감소시 비율 유지 */
+  list-style: none; /* li 태그 기본 점 제거 */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  font-weight: 600;
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #555;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+/* 마우스 올렸을 때 링크 글자 색상 변경 */
+.nav-menu li a:hover {
+  color: #dd343d;
+}
+
 .lego-container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
+/* 1. 배경 이미지 설정 */
 .lego-container > img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover; /* 화면을 꽉 채우되 비율 유지 */
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* 로고보다 뒤로 보내기 */
 }
 
 /* 2. 체크박스 숨기기*/
@@ -16,14 +76,14 @@
   display: none;
 }
 
-/* 로고 기본 스타일*/
+/* 3. 로고 박스 */
 .logo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  width: 100%;
-  height: 100%;
+  width: 120vw;
+  height: auto;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -33,13 +93,49 @@
   transition: transform 1.5s ease-in-out;
 }
 
+/* 로고 이미지 자체의 비율 유지 */
 .logo img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain; /* 이미지가 잘리지 않고 찌그러지지 않게 함 */
 }
 
-/* 체크박스 클릭 시 로고 크기 감소, 위치 조정정*/
+/* 체크박스 클릭 시 로고 크기 감소, 위치 조정*/
 #logo-toggle:checked + .logo {
-  transform: translate(-50%, -75%) scale(0.35);
+  transform: translate(-50%, -63%) scale(0.2);
+}
+
+@media (max-width: 767px) {
+  .nav-bar {
+    position: absolute; /* 섹션 1의 최상단에 절대좌표로 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+    height: 80px; /* 목차 바 높이 */
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between; /* 좌상단(KAYWON)과 우상단(메뉴들)을 양끝으로 정렬 */
+    align-items: center; /* 세로 기준 정중앙 정렬 */
+
+    z-index: 20; /* 웅장한 대형 로고(z-index: 10)보다 더 위에 보이도록 설정 */
+    background: transparent; /* 배경색*/
+  }
+
+  .nav-logo {
+    font-weight: 800;
+    font-size: 30px;
+    color: #333;
+    letter-spacing: 1px; /* 글자 자간 살짝 넓히기 */
+  }
+
+  /* 우상단 메뉴 바 그룹 */
+  .nav-menu {
+    display: flex;
+    gap: 3vw; /* 각 메뉴 사이의 간격, 창 크기 감소시 비율 유지 */
+    list-style: none; /* li 태그 기본 점 제거 */
+    margin: 0;
+    padding: 0;
+  }
 }

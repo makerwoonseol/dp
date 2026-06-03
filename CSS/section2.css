@@ -1,9 +1,8 @@
 .personal {
-  padding: 100px;
+  padding: 120px;
   box-sizing: border-box;
   overflow-x: hidden;
   margin-top: 100px;
-  scroll-margin-top: 100px;
 }
 
 .personal .card {
@@ -17,8 +16,9 @@
   overflow-y: hidden;
   padding-top: 220px;
   margin: -140px 0px 100px 0px;
-  background-color: #f4f5f7;
+  background-color: #fce511;
   transition: transform 0.5s ease;
+  border-radius: 30px;
 }
 
 .personal .cb {

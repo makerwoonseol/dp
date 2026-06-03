@@ -210,3 +210,63 @@
 #suwon-check:checked + .suwon + .bubble-suwon {
   display: block;
 }
+
+@media (max-width: 767px) {
+  .map {
+    padding: 48px 18px;
+    box-sizing: border-box;
+  }
+
+  .map-container {
+    width: min(100%, 520px);
+  }
+
+  .map-image {
+    border-width: 5px;
+    border-radius: 18px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+  }
+
+  .pin {
+    width: 22px;
+    height: 22px;
+    border-width: 3px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.24);
+  }
+
+  .pin::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .bubble {
+    width: 82px;
+    height: 82px;
+    padding: 7px;
+    border-radius: 14px;
+  }
+
+  .bubble img {
+    border-radius: 10px;
+  }
+
+  .bubble-seoul {
+    top: -5%;
+    left: 39%;
+  }
+
+  .bubble-namyangju {
+    top: -5%;
+    left: 56%;
+  }
+
+  .bubble-gwangju {
+    top: -15%;
+    left: 68%;
+  }
+
+  .bubble-suwon {
+    top: -55%;
+    left: 35%;
+  }
+}
