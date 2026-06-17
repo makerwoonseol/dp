@@ -240,6 +240,8 @@ main section {
   background-color: black;
   color: #ffff;
   scroll-snap-align: end;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .page-painter {

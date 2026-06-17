@@ -1,7 +1,3 @@
-/* 전체 화면 */
-
-/* 지도 전체 영역 */
-
 .map {
   display: flex;
   align-items: center;

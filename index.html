@@ -48,7 +48,7 @@
       <section class="personal start" id="personal-info">
         <div class="card">
           <div class="cb red">
-            <img src="Image/gs.png" alt="광식" />
+            <img src="Image/gs.png" alt="광식" class="gs" />
             <div>
               <h3>성광식</h3>
               <h5>#조장 #ENFP #코딩_너무_힘들어요</h5>
@@ -91,9 +91,16 @@
       <section class="Reason start" id="reason">
         <div class="manual">
           <input type="radio" name="manual-page" id="manual-page-1" checked />
+          <!--여기에 나와있는 첫번째 라디오 버튼만 "checked"라는게 되어 있잖아?
+          이 말이 곧 "현재 페이지"를 나타내는 거야. 그래서 웹사이트를 처음 켰을 때 checked가 되어있는 1페이지가 보이는 거야.
+          css는 이걸 보고 #(#은 id를 말해! class랑 비슷한 거)manual-page-1:checked(지금 체크가 된 상태)라고 인식한다.-->
           <input type="radio" name="manual-page" id="manual-page-2" />
           <input type="radio" name="manual-page" id="manual-page-3" />
           <input type="radio" name="manual-page" id="manual-page-4" />
+
+          <!--자 우선, 이 위에 4개부터 이해해야 돼.
+          이 4개가 말하고 있는 건, 여기에 라디오 버튼(하나씩 밖에 체크할 수 없는 체크박스)이 4개가 있다 고 말해주는 거야.
+          그런데 이걸 css에서 보면 .manual > input으로 opacity를 0으로 줘서 보이지 않는 거야.-->
 
           <div class="manual-book">
             <article class="manual-sheet sheet-1">
@@ -147,6 +154,14 @@
               class="manual-click manual-prev from-page-2"
               aria-label="이전 페이지"
             ></label>
+            <!--이게 진짜 중요한 파트임.
+            label은 말 그대로 음식에 라벨 붙이는 것과 같다고 이해하면 돼.
+            코딩의 경우는 인풋이라는 체크 상자에 라벨을 붙이는 거야.
+            
+            label 옆에 for이라는 말이 있잖아. for은 "무엇을 위해"라는 뜻도 있잖아?
+            그래서 말 그대로 "manual-page-1이라는 이름을 가진 인풋을 위한 라벨" 이라는 의미야.
+            이 경우에는 인풋을 누르지 않고, 그냥 라벨을 눌러도 인풋이 체크가 되는 현상이 생겨.
+            -->
             <label
               for="manual-page-2"
               class="manual-click manual-prev from-page-3"
@@ -163,6 +178,12 @@
               class="manual-click manual-next from-page-1"
               aria-label="다음 페이지"
             ></label>
+            <!--이 버튼의 class를 봐야 해.
+            이 의미는 곧 "1페이지에서만 보이는 다음 버튼" 이야.
+            
+            이걸 css로 가져가면, #manual-page-1:checked ~ .manual-book .from-page-1 라는 방법으로
+            코드를 찾고, 그 찾은 코드에게 display: block 을 시켜서 
+            "현재 페이지면 다음 버튼만 보이게 만드는 거야"-->
             <label
               for="manual-page-3"
               class="manual-click manual-next from-page-2"
@@ -251,7 +272,10 @@
     </main>
     <footer>
       <div class="footer">
-        <h3>감사합니다</h3>
+        <h3>22657031 성광식</h3>
+        <h3>22657057 임해민</h3>
+        <h3>김서현</h3>
+        <h3>양영희</h3>
       </div>
     </footer>
   </body>
