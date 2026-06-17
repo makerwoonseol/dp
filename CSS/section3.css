@@ -96,7 +96,10 @@
 
 #은 어떤 태크의 id(이름)이다.
 :은 상태를 의미하고, checked는 체크된 상태를 의미한다.
-~는 A 뒤에 있는 B를 선택하라는 의미이다. */
+~는 A 뒤에 있는 B를 선택하라는 의미이다. 
+
+그리고 그 안에 있는 
+z-index부터 transform 이라고 적혀있는 말들은 숨겨져 있던 페이지를 보이게 하라 라는 뜻이다.*/
 
 #manual-page-1:checked ~ .manual-book .from-page-1,
 #manual-page-2:checked ~ .manual-book .from-page-2,
