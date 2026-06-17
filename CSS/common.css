@@ -133,18 +133,32 @@ a {
 
 html,
 body {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 main {
-  height: 100vh;
+  min-height: 100vh;
   scroll-snap-type: y mandatory; /* 부모에서 작성해줘야함 */
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: visible;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+main > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 main::-webkit-scrollbar {
@@ -282,8 +296,10 @@ main > section {
 
 .footer {
   width: 100%;
-  height: 30px;
+  height: 100px;
   background-color: black;
+  color: #ffff;
+  scroll-snap-align: end;
 }
 
 .page-painter {
