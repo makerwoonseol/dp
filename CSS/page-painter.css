@@ -173,56 +173,19 @@ main > section > * {
 
 @media (max-width: 767px) {
   .paint-grid {
-    --paint-gap: 10px;
-    --paint-cell-gap: 10px;
     --paint-cell-size-adjust: 25px;
-    --paint-viewport-height: 100vh;
-    --paint-cell-size-base: min(
-      calc((100vw - 150px) / 14),
-      calc((var(--paint-viewport-height) - 90px) / 8)
-    );
-    --paint-cell-size: calc(
-      var(--paint-cell-size-base) + var(--paint-cell-size-adjust)
-    );
-
-    position: fixed;
-    inset: var(--paint-gap);
-    z-index: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--paint-cell-gap);
-    align-content: flex-start;
-    align-items: flex-start;
-    justify-content: space-between;
-    box-sizing: border-box;
-    overflow: hidden;
-    pointer-events: auto;
   }
 
   .paint-header {
-    position: fixed;
     top: 60px;
     left: 20%;
-    z-index: 50;
-    display: flex;
     gap: 12px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #111111;
-    border-radius: 8px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-    transform: translateX(-50%);
+    border-width: 2px;
   }
 
   .paint-pick {
     width: 30px;
     height: 30px;
-    box-sizing: border-box;
-    display: block;
     border: 2px solid transparent;
-    cursor: pointer;
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease;
   }
 }
