@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        display: none;
+      }
+
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        gap: 10px;
+
+        position: relative;
+        width: 320px;
+      }
+
+      .slot {
+        width: 100px;
+        height: 100px;
+        border: 2px dashed gray;
+      }
+
+      .piece {
+        position: absolute;
+        left: 400px;
+        top: 100px;
+      }
+
+      .b {
+        width: 100px;
+        height: 100px;
+        background: tomato;
+        display: block;
+
+        transition: transform 0.35s;
+      }
+
+      .board:has(.piece:active) .slot {
+        pointer-events: auto;
+      }
+
+      .slot {
+        pointer-events: none;
+      }
+
+      .board:has(.piece:active) .s1:hover ~ .piece .b {
+        transform: translate(-400px, -100px);
+      }
+      .board:has(.piece:active) .s2:hover ~ .piece .b {
+        transform: translate(-290px, -100px);
+      }
+      .board:has(.piece:active) .s3:hover ~ .piece .b {
+        transform: translate(-180px, -100px);
+      }
+
+      .board:has(.piece:active) .s4:hover ~ .piece .b {
+        transform: translate(-400px, 10px);
+      }
+      .board:has(.piece:active) .s5:hover ~ .piece .b {
+        transform: translate(-290px, 10px);
+      }
+      .board:has(.piece:active) .s6:hover ~ .piece .b {
+        transform: translate(-180px, 10px);
+      }
+
+      .board:has(.piece:active) .s7:hover ~ .piece .b {
+        transform: translate(-400px, 120px);
+      }
+      .board:has(.piece:active) .s8:hover ~ .piece .b {
+        transform: translate(-290px, 120px);
+      }
+      .board:has(.piece:active) .s9:hover ~ .piece .b {
+        transform: translate(-180px, 120px);
+      }
+
+      #p1:checked ~ .piece .b {
+        transform: translate(-400px, -100px);
+      }
+      #p2:checked ~ .piece .b {
+        transform: translate(-290px, -100px);
+      }
+      #p3:checked ~ .piece .b {
+        transform: translate(-180px, -100px);
+      }
+
+      #p4:checked ~ .piece .b {
+        transform: translate(-400px, 10px);
+      }
+      #p5:checked ~ .piece .b {
+        transform: translate(-290px, 10px);
+      }
+      #p6:checked ~ .piece .b {
+        transform: translate(-180px, 10px);
+      }
+
+      #p7:checked ~ .piece .b {
+        transform: translate(-400px, 120px);
+      }
+      #p8:checked ~ .piece .b {
+        transform: translate(-290px, 120px);
+      }
+      #p9:checked ~ .piece .b {
+        transform: translate(-180px, 120px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <!-- 상태 저장 -->
+      <input type="radio" name="pos" id="p1" />
+      <input type="radio" name="pos" id="p2" />
+      <input type="radio" name="pos" id="p3" />
+      <input type="radio" name="pos" id="p4" />
+      <input type="radio" name="pos" id="p5" />
+      <input type="radio" name="pos" id="p6" />
+      <input type="radio" name="pos" id="p7" />
+      <input type="radio" name="pos" id="p8" />
+      <input type="radio" name="pos" id="p9" />
+
+      <!-- 슬롯 -->
+      <label for="p1" class="slot s1"></label>
+      <label for="p2" class="slot s2"></label>
+      <label for="p3" class="slot s3"></label>
+      <label for="p4" class="slot s4"></label>
+      <label for="p5" class="slot s5"></label>
+      <label for="p6" class="slot s6"></label>
+      <label for="p7" class="slot s7"></label>
+      <label for="p8" class="slot s8"></label>
+      <label for="p9" class="slot s9"></label>
+
+      <!-- 조각 -->
+      <div class="piece">
+        <span class="b"></span>
+      </div>
+    </div>
+  </body>
+</html>

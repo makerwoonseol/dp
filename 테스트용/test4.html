@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Only Color Grid</title>
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #f4f4f4;
+        font-family: Arial, sans-serif;
+      }
+
+      .puzzle {
+        display: grid;
+        gap: 36px;
+      }
+
+      .puzzle input {
+        display: none;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 10px;
+      }
+
+      .slot {
+        position: relative;
+        box-sizing: border-box;
+        background: white;
+        border: 3px solid #cfcfcf;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          background-color 0.3s ease;
+      }
+
+      .slot:hover {
+        border-color: #ffd400;
+        transform: scale(1.06);
+      }
+
+      .paint,
+      .clear {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: block;
+        cursor: pointer;
+        pointer-events: none;
+      }
+
+      .palette {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .box {
+        width: 80px;
+        height: 80px;
+        box-sizing: border-box;
+        display: block;
+        border: 4px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .red-box {
+        background: #e53935;
+      }
+
+      .yellow-box {
+        background: #ffd21f;
+      }
+
+      .blue-box {
+        background: #1e73e8;
+      }
+
+      #pick-red:checked ~ .palette label[for="pick-red"],
+      #pick-yellow:checked ~ .palette label[for="pick-yellow"],
+      #pick-blue:checked ~ .palette label[for="pick-blue"] {
+        border-color: #111111;
+        transform: scale(1.12);
+      }
+
+      #pick-red:checked ~ .grid .paint-red,
+      #pick-yellow:checked ~ .grid .paint-yellow,
+      #pick-blue:checked ~ .grid .paint-blue {
+        z-index: 2;
+        pointer-events: auto;
+      }
+
+      #pick-red:checked ~ #cell-1-red:checked ~ .grid .clear-1-red,
+      #pick-red:checked ~ #cell-2-red:checked ~ .grid .clear-2-red,
+      #pick-red:checked ~ #cell-3-red:checked ~ .grid .clear-3-red,
+      #pick-red:checked ~ #cell-4-red:checked ~ .grid .clear-4-red,
+      #pick-red:checked ~ #cell-5-red:checked ~ .grid .clear-5-red,
+      #pick-red:checked ~ #cell-6-red:checked ~ .grid .clear-6-red,
+      #pick-red:checked ~ #cell-7-red:checked ~ .grid .clear-7-red,
+      #pick-red:checked ~ #cell-8-red:checked ~ .grid .clear-8-red,
+      #pick-red:checked ~ #cell-9-red:checked ~ .grid .clear-9-red,
+      #pick-yellow:checked ~ #cell-1-yellow:checked ~ .grid .clear-1-yellow,
+      #pick-yellow:checked ~ #cell-2-yellow:checked ~ .grid .clear-2-yellow,
+      #pick-yellow:checked ~ #cell-3-yellow:checked ~ .grid .clear-3-yellow,
+      #pick-yellow:checked ~ #cell-4-yellow:checked ~ .grid .clear-4-yellow,
+      #pick-yellow:checked ~ #cell-5-yellow:checked ~ .grid .clear-5-yellow,
+      #pick-yellow:checked ~ #cell-6-yellow:checked ~ .grid .clear-6-yellow,
+      #pick-yellow:checked ~ #cell-7-yellow:checked ~ .grid .clear-7-yellow,
+      #pick-yellow:checked ~ #cell-8-yellow:checked ~ .grid .clear-8-yellow,
+      #pick-yellow:checked ~ #cell-9-yellow:checked ~ .grid .clear-9-yellow,
+      #pick-blue:checked ~ #cell-1-blue:checked ~ .grid .clear-1-blue,
+      #pick-blue:checked ~ #cell-2-blue:checked ~ .grid .clear-2-blue,
+      #pick-blue:checked ~ #cell-3-blue:checked ~ .grid .clear-3-blue,
+      #pick-blue:checked ~ #cell-4-blue:checked ~ .grid .clear-4-blue,
+      #pick-blue:checked ~ #cell-5-blue:checked ~ .grid .clear-5-blue,
+      #pick-blue:checked ~ #cell-6-blue:checked ~ .grid .clear-6-blue,
+      #pick-blue:checked ~ #cell-7-blue:checked ~ .grid .clear-7-blue,
+      #pick-blue:checked ~ #cell-8-blue:checked ~ .grid .clear-8-blue,
+      #pick-blue:checked ~ #cell-9-blue:checked ~ .grid .clear-9-blue {
+        z-index: 3;
+        pointer-events: auto;
+      }
+
+      #cell-1-red:checked ~ .grid .slot-1,
+      #cell-2-red:checked ~ .grid .slot-2,
+      #cell-3-red:checked ~ .grid .slot-3,
+      #cell-4-red:checked ~ .grid .slot-4,
+      #cell-5-red:checked ~ .grid .slot-5,
+      #cell-6-red:checked ~ .grid .slot-6,
+      #cell-7-red:checked ~ .grid .slot-7,
+      #cell-8-red:checked ~ .grid .slot-8,
+      #cell-9-red:checked ~ .grid .slot-9 {
+        background: #e53935;
+        border-color: #e53935;
+      }
+
+      #cell-1-yellow:checked ~ .grid .slot-1,
+      #cell-2-yellow:checked ~ .grid .slot-2,
+      #cell-3-yellow:checked ~ .grid .slot-3,
+      #cell-4-yellow:checked ~ .grid .slot-4,
+      #cell-5-yellow:checked ~ .grid .slot-5,
+      #cell-6-yellow:checked ~ .grid .slot-6,
+      #cell-7-yellow:checked ~ .grid .slot-7,
+      #cell-8-yellow:checked ~ .grid .slot-8,
+      #cell-9-yellow:checked ~ .grid .slot-9 {
+        background: #ffd21f;
+        border-color: #ffd21f;
+      }
+
+      #cell-1-blue:checked ~ .grid .slot-1,
+      #cell-2-blue:checked ~ .grid .slot-2,
+      #cell-3-blue:checked ~ .grid .slot-3,
+      #cell-4-blue:checked ~ .grid .slot-4,
+      #cell-5-blue:checked ~ .grid .slot-5,
+      #cell-6-blue:checked ~ .grid .slot-6,
+      #cell-7-blue:checked ~ .grid .slot-7,
+      #cell-8-blue:checked ~ .grid .slot-8,
+      #cell-9-blue:checked ~ .grid .slot-9 {
+        background: #1e73e8;
+        border-color: #1e73e8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="puzzle">
+      <input type="radio" name="picked-color" id="pick-red" checked />
+      <input type="radio" name="picked-color" id="pick-yellow" />
+      <input type="radio" name="picked-color" id="pick-blue" />
+
+      <input type="radio" name="cell-1" id="cell-1-none" checked />
+      <input type="radio" name="cell-1" id="cell-1-red" />
+      <input type="radio" name="cell-1" id="cell-1-yellow" />
+      <input type="radio" name="cell-1" id="cell-1-blue" />
+
+      <input type="radio" name="cell-2" id="cell-2-none" checked />
+      <input type="radio" name="cell-2" id="cell-2-red" />
+      <input type="radio" name="cell-2" id="cell-2-yellow" />
+      <input type="radio" name="cell-2" id="cell-2-blue" />
+
+      <input type="radio" name="cell-3" id="cell-3-none" checked />
+      <input type="radio" name="cell-3" id="cell-3-red" />
+      <input type="radio" name="cell-3" id="cell-3-yellow" />
+      <input type="radio" name="cell-3" id="cell-3-blue" />
+
+      <input type="radio" name="cell-4" id="cell-4-none" checked />
+      <input type="radio" name="cell-4" id="cell-4-red" />
+      <input type="radio" name="cell-4" id="cell-4-yellow" />
+      <input type="radio" name="cell-4" id="cell-4-blue" />
+
+      <input type="radio" name="cell-5" id="cell-5-none" checked />
+      <input type="radio" name="cell-5" id="cell-5-red" />
+      <input type="radio" name="cell-5" id="cell-5-yellow" />
+      <input type="radio" name="cell-5" id="cell-5-blue" />
+
+      <input type="radio" name="cell-6" id="cell-6-none" checked />
+      <input type="radio" name="cell-6" id="cell-6-red" />
+      <input type="radio" name="cell-6" id="cell-6-yellow" />
+      <input type="radio" name="cell-6" id="cell-6-blue" />
+
+      <input type="radio" name="cell-7" id="cell-7-none" checked />
+      <input type="radio" name="cell-7" id="cell-7-red" />
+      <input type="radio" name="cell-7" id="cell-7-yellow" />
+      <input type="radio" name="cell-7" id="cell-7-blue" />
+
+      <input type="radio" name="cell-8" id="cell-8-none" checked />
+      <input type="radio" name="cell-8" id="cell-8-red" />
+      <input type="radio" name="cell-8" id="cell-8-yellow" />
+      <input type="radio" name="cell-8" id="cell-8-blue" />
+
+      <input type="radio" name="cell-9" id="cell-9-none" checked />
+      <input type="radio" name="cell-9" id="cell-9-red" />
+      <input type="radio" name="cell-9" id="cell-9-yellow" />
+      <input type="radio" name="cell-9" id="cell-9-blue" />
+
+      <div class="grid">
+        <div class="slot slot-1">
+          <label for="cell-1-red" class="paint paint-red"></label>
+          <label for="cell-1-yellow" class="paint paint-yellow"></label>
+          <label for="cell-1-blue" class="paint paint-blue"></label>
+          <label for="cell-1-none" class="clear clear-1-red"></label>
+          <label for="cell-1-none" class="clear clear-1-yellow"></label>
+          <label for="cell-1-none" class="clear clear-1-blue"></label>
+        </div>
+
+        <div class="slot slot-2">
+          <label for="cell-2-red" class="paint paint-red"></label>
+          <label for="cell-2-yellow" class="paint paint-yellow"></label>
+          <label for="cell-2-blue" class="paint paint-blue"></label>
+          <label for="cell-2-none" class="clear clear-2-red"></label>
+          <label for="cell-2-none" class="clear clear-2-yellow"></label>
+          <label for="cell-2-none" class="clear clear-2-blue"></label>
+        </div>
+
+        <div class="slot slot-3">
+          <label for="cell-3-red" class="paint paint-red"></label>
+          <label for="cell-3-yellow" class="paint paint-yellow"></label>
+          <label for="cell-3-blue" class="paint paint-blue"></label>
+          <label for="cell-3-none" class="clear clear-3-red"></label>
+          <label for="cell-3-none" class="clear clear-3-yellow"></label>
+          <label for="cell-3-none" class="clear clear-3-blue"></label>
+        </div>
+
+        <div class="slot slot-4">
+          <label for="cell-4-red" class="paint paint-red"></label>
+          <label for="cell-4-yellow" class="paint paint-yellow"></label>
+          <label for="cell-4-blue" class="paint paint-blue"></label>
+          <label for="cell-4-none" class="clear clear-4-red"></label>
+          <label for="cell-4-none" class="clear clear-4-yellow"></label>
+          <label for="cell-4-none" class="clear clear-4-blue"></label>
+        </div>
+
+        <div class="slot slot-5">
+          <label for="cell-5-red" class="paint paint-red"></label>
+          <label for="cell-5-yellow" class="paint paint-yellow"></label>
+          <label for="cell-5-blue" class="paint paint-blue"></label>
+          <label for="cell-5-none" class="clear clear-5-red"></label>
+          <label for="cell-5-none" class="clear clear-5-yellow"></label>
+          <label for="cell-5-none" class="clear clear-5-blue"></label>
+        </div>
+
+        <div class="slot slot-6">
+          <label for="cell-6-red" class="paint paint-red"></label>
+          <label for="cell-6-yellow" class="paint paint-yellow"></label>
+          <label for="cell-6-blue" class="paint paint-blue"></label>
+          <label for="cell-6-none" class="clear clear-6-red"></label>
+          <label for="cell-6-none" class="clear clear-6-yellow"></label>
+          <label for="cell-6-none" class="clear clear-6-blue"></label>
+        </div>
+
+        <div class="slot slot-7">
+          <label for="cell-7-red" class="paint paint-red"></label>
+          <label for="cell-7-yellow" class="paint paint-yellow"></label>
+          <label for="cell-7-blue" class="paint paint-blue"></label>
+          <label for="cell-7-none" class="clear clear-7-red"></label>
+          <label for="cell-7-none" class="clear clear-7-yellow"></label>
+          <label for="cell-7-none" class="clear clear-7-blue"></label>
+        </div>
+
+        <div class="slot slot-8">
+          <label for="cell-8-red" class="paint paint-red"></label>
+          <label for="cell-8-yellow" class="paint paint-yellow"></label>
+          <label for="cell-8-blue" class="paint paint-blue"></label>
+          <label for="cell-8-none" class="clear clear-8-red"></label>
+          <label for="cell-8-none" class="clear clear-8-yellow"></label>
+          <label for="cell-8-none" class="clear clear-8-blue"></label>
+        </div>
+
+        <div class="slot slot-9">
+          <label for="cell-9-red" class="paint paint-red"></label>
+          <label for="cell-9-yellow" class="paint paint-yellow"></label>
+          <label for="cell-9-blue" class="paint paint-blue"></label>
+          <label for="cell-9-none" class="clear clear-9-red"></label>
+          <label for="cell-9-none" class="clear clear-9-yellow"></label>
+          <label for="cell-9-none" class="clear clear-9-blue"></label>
+        </div>
+      </div>
+
+      <div class="palette">
+        <label for="pick-red" class="box red-box"></label>
+        <label for="pick-yellow" class="box yellow-box"></label>
+        <label for="pick-blue" class="box blue-box"></label>
+      </div>
+    </div>
+  </body>
+</html>

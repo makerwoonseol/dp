@@ -1,5 +1,17 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
 body {
   background: #ffffff;
+  /*왜 body를 또 한번 더 여기서 배경색을 주는가?
+  단순한 이유다. 여기서 사용되는 body는 index.html에 사용되는 게 아니라 page-painter.html에 사용되는 것이기
+  때문이다. 그러니 혼선하거나 오해하지 말자 여러분*/
+  font-family: "Pretendard";
 }
 
 .page-painter input {
@@ -52,6 +64,24 @@ body {
   transform: scale(1.12);
 }
 
+/*이 무진장 어렵게 생긴 #pick-red:checked ~ .paint-header label[for="pickred"]
+긴 코드를 보고 당황했을지 몰라. 그런데 당황할 필요가 없어.
+
+1. #은 html에 있는 어떤 텍스트의 id를 말해. 우리가 배운 class랑 비슷한데 다른 이름을 정해주는 기능이야.
+그 이름(id)이 지금 pick-red라는 뜻이야.
+2. :checked 라는 뜻은, common.css에서도 말해준 것처럼 :는 상태를 의미해.
+그러니까 즉 "체크 되어있는 상태" 라는 뜻이야. 이 코드에서는 input 태그를 사용해서 체크 했고 안 했고를 알 수 있어.
+3. 이게 제일 중요해. 쉽게 말해 A ~ B 라고 되어 있으면 "A 뒤에 있는 B를 건드려라" 라는 의미라고 생각하면 쉬워.
+우리의 경우는 "pick-red라는 이름을 가진 input을 클릭하면 그 input 뒤에 있는 .paint-header를 건드려라" 라는 의미야. 
+4. label[for="pick-red"]. 
+쉽게 말하면, 우리가 지난 수업 때 label에 대해 배웠잖아. 그 label에 for(누구에게) pick-red 라고 이름을 지어준 label이 있는거야.
+즉, label 중에서 for="pick-red" 라는 이름을 가진 애를 말해
+
+그러니까 쉽게 정리하면,
+pick-red라는 이름을 가진 input이 체크되면 그 input 뒤에 있는 paint-header 안의 pick-red라는 for를 가진 label을 건드려라!
+라는 의미인거야.
+그 label의 테두리와 몸집이 커지게 하는 거지*/
+
 .paint-grid {
   --paint-gap: 10px;
   --paint-cell-gap: 10px;
@@ -64,6 +94,30 @@ body {
   --paint-cell-size: calc(
     var(--paint-cell-size-base) + var(--paint-cell-size-adjust)
   );
+
+  /*여기서부터 무분별하게 등장하는 --라는 친구와 calc, var라는 듣도보도 못한 친구들이 있어. 하나씩 풀어보자.
+  -- 는 "css의 변수" 라고 생각하면 좋아. 변수란 이름표를 붙여둔 작은 상자 같은 거야. 우리가 옛날에 수학 할 때 배웠던 미지수 x 같은 거야. 
+  어떤 값을 "저장"해놓는 상자 라고 생각하면 쉬워.
+  우리가 항상 어떤 값을 적으면 힘들잖아. 
+  예를 들어 10px만 계속 반복되고, 자주 써야 한다면, 그 10px을 바꾸기 위해 모든 걸 바꾸면 힘들잖아.
+  그래서 10px이라는 값을 paint-gap 이라는 상자에 넣어두는 거야. 그렇게 하면 10px을 하나 하나 바꾸는 게 아니라 그 상자에 들어있는 10px만 바꾸면, 모두 수정되는 거지
+
+  그 상자를 사용하기 위해서 var() 라는 걸 사용해.
+  내가 흔히 
+  height: 10px이라고 적지 않고, 상자를 쓰려면
+  height: var(--paint-gap) 이라고 적는 거야. 그러면 paint-gap이라는 이름을 가진 상자 안의 값을 사용할 수 있어.
+  그래서 상자를 사용하게 해주는 장치 같은 거야.
+
+  calc()는 계산기야.
+  수학으로 연산을 해주는 거야. 이게 왜 필요하냐고 할 수도 있는데, 우리가 만약 코드를 엄청 복잡하게 짜고, 마진 값도
+  헷갈리고 그럴 때, 정말 큰 도움이 되는 애들이야.
+  예시로, 바로 위에 있는 코드에 
+  calc((100vw - 150px) / 14)
+  라고 되어 있어. 이 말은 "화면 너비(100vh)에서 150px을 빼고 그걸 14로 나눠줘" 라는 말인거야.
+
+  그래서 자세히 보면, paint-cell-size-base 라는 이름을 가진 상자 안에 계산으로 만든 값을 저장해 놓은 거야 저 코드는.
+  
+  마지막으로 min()이라는 의미는 만약 min(A, B) 라고 되어 있으면, "A와 B 중에서 더 작은 것을 고르세요" 라는 뜻이야. */
 
   position: fixed;
   inset: var(--paint-gap);
@@ -188,4 +242,64 @@ main > section > * {
     height: 30px;
     border: 2px solid transparent;
   }
+}
+
+#notice-close {
+  display: none;
+}
+
+/* 알림 박스 */
+.notice-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  background: #fce511;
+  backdrop-filter: blur(10px);
+
+  padding: 14px 18px;
+  border-radius: 18px;
+
+  border: #ffdd00 3px solid;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 999;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0.4s;
+}
+
+/* X 버튼 */
+.close-btn {
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+/* 체크되면 사라짐 */
+#notice-close:checked + .notice-box {
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+}
+
+/* 클릭 가능한 느낌 */
+.notice-text {
+  cursor: pointer;
 }

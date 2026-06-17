@@ -1,7 +1,9 @@
 .personal {
-  padding: 120px;
+  padding: 120px 120px 0px 120px;
   box-sizing: border-box;
   overflow-x: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .personal .card {
@@ -14,7 +16,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-top: 220px;
-  margin: -140px 0px 100px 0px;
+  margin: -140px 0px 0px 0px;
   background-color: #fce511;
   transition: transform 0.5s ease;
   border-radius: 30px;
@@ -113,4 +115,55 @@
 
 .green:hover {
   transform: scale(1.05);
+}
+
+/* 하단 전체 영역 */
+.bottom-marquee {
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  overflow: hidden;
+
+  padding: 2vh 0;
+
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* 움직이는 트랙 */
+.marquee-track {
+  display: flex;
+  width: max-content;
+
+  animation: marqueeMove 18s linear infinite;
+}
+
+/* 텍스트 */
+.marquee-track span {
+  flex-shrink: 0;
+
+  font-size: 10vw; /* 페이지의 약 1/6 느낌 */
+  font-weight: 900;
+
+  line-height: 0.9;
+  white-space: nowrap;
+
+  padding-right: 8vw;
+
+  color: rgb(255, 255, 255);
+
+  transform-origin: center;
+  animation: textRotate 6s ease-in-out infinite;
+}
+
+/* 오른쪽 -> 왼쪽 이동 */
+@keyframes marqueeMove {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }

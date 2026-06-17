@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Puzzle</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .piece-wrap input {
+        display: none;
+      }
+
+      .piece {
+        position: relative;
+        display: block;
+        width: 100px;
+        height: 100px;
+        margin: 80px;
+        outline: 1px dashed black;
+      }
+
+      .piece .a {
+        position: absolute;
+        inset: 0;
+        width: 0;
+        height: 100%;
+        z-index: 1;
+        display: block;
+        cursor: grabbing;
+        pointer-events: none;
+      }
+
+      .piece .b {
+        position: absolute;
+        inset: 0;
+        display: block;
+        cursor: grab;
+        background-size: 200px 200px;
+        transition: transform 0.3s;
+        background-color: tomato;
+        transform: translate(100px, 200px);
+        user-select: none;
+      }
+
+      /* 퍼즐 조각 각각 다른 이미지 위치 */
+      /* b를 누르고 있는 동안 원래 위치의 drop zone(a) 활성화 */
+      .piece:active .a {
+        width: 100%;
+        pointer-events: auto;
+      }
+
+      .piece:active .b {
+        cursor: grabbing;
+        transition: none;
+      }
+
+      /* b를 잡은 채 원래 위치(a)에 닿으면 제자리로 snap */
+      .piece:active .a:hover ~ .b {
+        transform: translate(0, 0);
+      }
+
+      /* 원래 위치(a)에서 마우스를 놓으면 체크되어 그 자리에 고정 */
+      .piece-wrap input:checked + .piece .b {
+        transform: translate(0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="piece-wrap">
+      <input type="checkbox" id="piece-snap" />
+      <label for="piece-snap" class="piece">
+        <span class="a"></span>
+        <span class="b" draggable="false"></span>
+      </label>
+    </div>
+
+    <div class="piece-wrap">
+      <input type="checkbox" id="piece-snap" />
+      <label for="piece-snap" class="piece">
+        <span class="a"></span>
+      </label>
+    </div>
+  </body>
+</html>
