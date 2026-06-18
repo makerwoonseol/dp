@@ -33,6 +33,20 @@
   box-sizing: border-box;
 }
 
+.personal .cb h3 {
+  font-weight: 700;
+  font-size: 50px;
+  color: white;
+  margin-top: 240px;
+  margin-bottom: 10px;
+}
+
+.personal .cb h5 {
+  font-weight: 300;
+  color: white;
+  font-size: 20px;
+}
+
 .gs {
   position: absolute;
   width: 600px;
@@ -217,5 +231,168 @@
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  /* 이 무섭게 생긴 @media 어쩌고 저쩌고 는 모바일 버전으로 바꾸는 것이다. 
+  "화면이 767px 이하로 가면~ 모바일 버전으로 바꿔라~" 라고 알려주는 코드이다. 단순하니 기억해놓자.*/
+
+  .personal {
+    padding: 20px;
+    scroll-margin-top: 100px;
+    margin-top: 100px;
+    background-color: #fce511;
+    box-shadow: 0 -100px 0 #fce511;
+  }
+
+  .personal .card {
+    gap: 50px;
+    background-color: transparent;
+  }
+
+  .personal .cb {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .gs {
+    width: 400px;
+    left: 70%;
+    top: -120px;
+    transform: translateX(-50%) rotate(-8deg);
+    transition: transform 0.5s ease;
+    /* ":first-child"가 무엇인가? 말 그대로다. 의외로 코딩은 말 그대로일 때가 많다.
+    말 그대로 첫번째 자식, 장자를 말한다.
+    personal 이라는 할아버지의 아들 cb의 첫째 아들 img를 불러오는 것이다.
+    cb가 애를 3명이나 가졌다면, 그중 첫째를 부르는 코드이다.*/
+  }
+
+  .yh {
+    width: 220px;
+    left: 68%;
+    top: -116px;
+    transform: translateX(-50%) rotate(-15deg);
+    transition: transform 0.5s ease;
+  }
+
+  .hm {
+    width: 210px;
+    left: 76%;
+    top: -100px;
+    transform: translateX(-50%) rotate(-20deg);
+    transition: transform 0.5s ease;
+  }
+
+  .sh {
+    width: 320px;
+    left: 50%;
+    top: -60px;
+    transform: translateX(-50%);
+    transition: transform 0.5s ease;
+  }
+
+  .red {
+    background-color: #dd343d;
+    transition: transform 0.5s ease;
+  }
+
+  .red:hover {
+    transform: scale(1.01);
+
+    .gs {
+      width: 400px;
+      left: 70%;
+      top: -120px;
+      transform: translateX(-50%) rotate(-15deg);
+      transform-origin: center bottom;
+    }
+  }
+
+  .blue {
+    background-color: #1b72d3;
+    transition: transform 0.5s ease;
+  }
+
+  .blue:hover {
+    transform: scale(1.01);
+
+    .yh {
+      width: 220px;
+      left: 68%;
+      top: -116px;
+      transform: translateX(-50%) rotate(-25deg);
+      transform-origin: center bottom;
+    }
+  }
+
+  .yellow {
+    background-color: #ffcb26;
+    transition: transform 0.5s ease;
+  }
+
+  .yellow:hover {
+    transform: scale(1.01);
+
+    .hm {
+      position: absolute;
+      width: 210px;
+      left: 76%;
+      top: -100px;
+      height: auto;
+      z-index: 2;
+      filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+      transform: translateX(-50%) rotate(-30deg);
+      transform-origin: center bottom;
+    }
+  }
+
+  .green {
+    background-color: #2cc069;
+    transition: transform 0.5s ease;
+  }
+
+  .green:hover {
+    transform: scale(1.05);
+
+    .sh {
+      position: absolute;
+      width: 320px;
+      left: 50%;
+      top: -60px;
+      height: auto;
+      z-index: 2;
+      filter: drop-shadow(20px 24px 20px rgba(0, 0, 0, 0.32));
+      transform: translateX(-50%) rotate(-10deg);
+      transform-origin: center bottom;
+    }
+  }
+
+  .personal .cb h3 {
+    font-size: 36px;
+    margin-top: 200px;
+  }
+
+  .personal .cb h5 {
+    font-size: 18px;
+  }
+
+  .marquee-track span {
+    flex-shrink: 0;
+
+    font-size: 60px;
+    font-weight: 900;
+
+    line-height: 0.9;
+    white-space: nowrap;
+
+    padding-right: 8vw;
+
+    color: rgb(255, 255, 255);
+
+    transform-origin: center;
+    animation: textRotate 6s ease-in-out infinite;
   }
 }
